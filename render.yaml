@@ -1,0 +1,19 @@
+services:
+  # Backend API (Node/Express)
+  - type: web
+    name: edutech-api
+    env: node
+    rootDir: server
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    plan: free
+    autoDeploy: true
+
+  # Frontend (React, CRA build as static site)
+  - type: static_site
+    name: edutech-frontend
+    rootDir: client
+    buildCommand: "npm install && npm run build"
+    publishPath: build
+    plan: free
+    autoDeploy: true
