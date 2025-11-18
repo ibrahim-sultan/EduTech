@@ -22,23 +22,38 @@ function Shell({ children }) {
             Edu<span>Tech</span>
           </Link>
         </div>
-        <nav className="app-nav">
-          {user && (
-            <>
-              <Link to="/dashboard">Dashboard</Link>
-              {user.role === 'mentor' && <Link to="/mentor">Mentor</Link>}
-              {user.role === 'admin' && <Link to="/admin">Admin</Link>}
-              <button className="button secondary" onClick={logout} style={{ marginLeft: '1rem' }}>
-                Logout
-              </button>
-            </>
-          )}
-          {!user && (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )}
+        <nav className="app-nav" style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+          <div style={{ display: 'flex', flex: 1 }}>
+            <a href="#programs">Programs</a>
+            <a href="#about">About</a>
+            <a href="#resources">Resources</a>
+            <a href="#business">For business</a>
+            <a href="#financing">Financing</a>
+          </div>
+          <div>
+            {user && (
+              <>
+                <Link to="/dashboard">Dashboard</Link>
+                {user.role === 'mentor' && <Link to="/mentor">Mentor</Link>}
+                {user.role === 'admin' && <Link to="/admin">Admin</Link>}
+                <button
+                  className="button secondary"
+                  onClick={logout}
+                  style={{ marginLeft: '1rem' }}
+                >
+                  Logout
+                </button>
+              </>
+            )}
+            {!user && (
+              <>
+                <Link to="/login">Log in</Link>
+                <Link to="/register" className="button" style={{ marginLeft: '0.75rem' }}>
+                  Apply now
+                </Link>
+              </>
+            )}
+          </div>
         </nav>
       </header>
       <main className="app-main">{children}</main>
