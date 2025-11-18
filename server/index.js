@@ -5,6 +5,15 @@ const dotenv = require('dotenv');
 
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/courses');
+const trackRoutes = require('./routes/tracks');
+const enrollmentRoutes = require('./routes/enrollments');
+const progressRoutes = require('./routes/progress');
+const moduleRoutes = require('./routes/modules');
+const lessonRoutes = require('./routes/lessons');
+const assignmentRoutes = require('./routes/assignments');
+const submissionRoutes = require('./routes/submissions');
+const mentorRoutes = require('./routes/mentors');
+const sessionRoutes = require('./routes/sessions');
 
 dotenv.config();
 
@@ -58,6 +67,33 @@ app.use('/api/auth', authRoutes);
 
 // Course routes
 app.use('/api/courses', courseRoutes);
+
+// Track/program routes
+app.use('/api/tracks', trackRoutes);
+
+// Enrollment routes
+app.use('/api/enrollments', enrollmentRoutes);
+
+// Progress routes
+app.use('/api/progress', progressRoutes);
+
+// Module admin routes (create modules under tracks)
+app.use('/api/modules', moduleRoutes);
+
+// Lesson admin routes (create lessons under modules)
+app.use('/api/lessons', lessonRoutes);
+
+// Assignment routes (admin create/update, students list)
+app.use('/api/assignments', assignmentRoutes);
+
+// Submission routes (students submit, mentors review)
+app.use('/api/submissions', submissionRoutes);
+
+// Mentor profile routes
+app.use('/api/mentors', mentorRoutes);
+
+// Session routes (mentor-student sessions)
+app.use('/api/sessions', sessionRoutes);
 
 // Connect to MongoDB and start server
 async function start() {
